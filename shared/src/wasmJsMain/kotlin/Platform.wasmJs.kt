@@ -3,3 +3,5 @@ class WasmPlatform: Platform {
 }
 
 actual fun getPlatform(): Platform = WasmPlatform()
+
+actual fun getSomeInt(): Int = 1997

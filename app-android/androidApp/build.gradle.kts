@@ -36,6 +36,7 @@ android {
 //        debugImplementation(libs.compose.ui.tooling)
 //    }
 }
-dependencies { 
-    implementation(project(":composeApp"))
+dependencies {
+    implementation(project(":shared"))
 }
+ 

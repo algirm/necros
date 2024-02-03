@@ -18,5 +18,5 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
+include(":shared")
 include(":app-android:androidApp")
