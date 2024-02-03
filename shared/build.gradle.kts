@@ -55,6 +55,8 @@ kotlin {
             implementation(compose.components.resources)
             
             implementation(libs.kotlinx.datetime)
+            
+            implementation(libs.koin.core)
         }
     }
 }
