@@ -37,6 +37,7 @@ android {
 //    }
 }
 dependencies {
-    implementation(project(":shared"))
+    implementation(project(":shared:common"))
+    implementation(project(":shared:compose"))
 }
  
