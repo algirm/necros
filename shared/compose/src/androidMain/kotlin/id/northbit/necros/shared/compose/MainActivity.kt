@@ -1,6 +1,5 @@
-package id.northbit.necros
+package id.northbit.necros.shared.compose
 
-import App
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent

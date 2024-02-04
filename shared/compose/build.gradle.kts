@@ -18,8 +18,14 @@ kotlin {
             }
         }
     }
-    
+
     jvm()
+//    js { browser() }
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+////        binaries.executable()
+    }
 
     sourceSets {
 
@@ -38,10 +44,15 @@ kotlin {
 
             implementation(libs.kotlinx.datetime)
 
-            implementation(libs.koin.core)
+//            implementation(libs.koin.core)
+            implementation(project(":shared:common"))
         }
-//        jsMain
     }
+}
+
+dependencies {
+//    implementation(projects.shared.common)
+
 }
 
 android {

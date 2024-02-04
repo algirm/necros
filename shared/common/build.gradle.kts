@@ -1,18 +1,16 @@
-//@file:Suppress("OPT_IN_USAGE")
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
-import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+//@file:Suppress("OPT_IN_USAGE")
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.jetbrainsCompose)
+//    alias(libs.plugins.jetbrainsCompose)
 }
 
 kotlin {
 //    jvmToolchain(17)
-    
+
 //    @OptIn(ExperimentalWasmDsl::class)
 //    wasmJs {
 //        moduleName = "shared"
@@ -23,14 +21,14 @@ kotlin {
 //        }
 //        binaries.executable()
 //    }
-    
+
 //    js {
 //        useCommonJs()
 //        browser()
 //    }
-    
+//    androidTarget()
 //    jvm()
-    
+
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -38,46 +36,83 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "shared"
+            baseName = "shared:common"
             isStatic = true
         }
     }
 
 //    androidTarget()
-//    jvm()
+    jvm()
+//    js { 
+////        useCommonJs()
+//        browser()
+//    }
+    @OptIn(org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl::class) wasmJs {
+//        moduleName = "wasmJsApp"\
+        browser()
+//        browser {
+//            commonWebpackConfig {
+//                outputFileName = "wasmJsApp.js"
+//                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
+//                    // Uncomment and configure this if you want to open a browser different from the system default 
+//                    // open = mapOf(
+//                    //     "app" to mapOf(
+//                    //         "name" to "google chrome"
+//                    //     )
+//                    // )
+//
+//                    static = (static ?: mutableListOf()).apply {
+//                        // Serve sources to debug inside browser
+//                        add(project.rootDir.path)
+//                        add(project.rootDir.path + "/shared/common/commonMainasd/")
+////                        add(project.rootDir.path + "/nonAndroidMain/")
+////                        add(project.rootDir.path + "/web/")
+//                    }
+//                }
+//            }
+//        }
+//        binaries.executable()
+    }
 //
 //    js(IR) {
 //        useCommonJs()
 //        browser()
 //    }
-    
+
     sourceSets {
-        
-        androidMain.dependencies {
-            implementation(libs.compose.ui.tooling.preview)
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.koin.core)
-        }
+
+//        androidMain.dependencies {
+////            implementation(libs.compose.ui.tooling.preview)
+////            implementation(libs.androidx.activity.compose)
+////            implementation(libs.koin.core)
+//        }
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
-            @OptIn(ExperimentalComposeLibrary::class)
-            implementation(compose.components.resources)
-            
+//            implementation(compose.runtime)
+//            implementation(compose.foundation)
+//            implementation(compose.material)
+//            implementation(compose.ui)
+//            @OptIn(ExperimentalComposeLibrary::class)
+//            implementation(compose.components.resources)
+
             implementation(libs.kotlinx.datetime)
-            
-            implementation(libs.koin.core)
+//            implementation(libs.koin.core)
         }
-//        jsMain
+//        val jsWasmMain by getting {
+//            dependsOn(commonMain.get())
+//        }
+//        val jsMain by getting {
+//            dependsOn(jsWasmMain)
+//        }
+//        val wasmJsMain by getting {
+//            dependsOn(commonMain.get())
+//        }
     }
 }
 
@@ -93,11 +128,11 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
 //        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-//    packaging {
-//        resources {
-//            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-//        }
-//    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
 //    buildTypes {
 //        getByName("release") {
 //            isMinifyEnabled = false

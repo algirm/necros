@@ -1,3 +1,6 @@
+package id.northbit.necros.shared.compose
+
+import Greeting
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -25,9 +28,9 @@ fun App() {
         val greeting = remember { Greeting().greet() }
         val greetingList = remember { Greeting().greetList() }
         
-        Surface { 
-            
-        }
+//        Surface { 
+//            
+//        }
 
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             Button(onClick = { showContent = !showContent }) {

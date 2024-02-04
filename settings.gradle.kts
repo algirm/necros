@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 include(":shared:common")
 include(":shared:compose")
 include(":app-android:androidApp")
+include(":app-web:wasmJsApp")
