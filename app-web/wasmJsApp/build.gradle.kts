@@ -39,34 +39,34 @@ kotlin {
         //applyBinaryen()
     }
     sourceSets {
-//        commonMain {
-//            dependencies {
-//                implementation(project(":shared:common"))
-//                implementation(project(":shared:compose"))
-//            }
+//        commonMain.dependencies {
+////            dependencies {
+//            implementation(compose.runtime)
+//            implementation(compose.foundation)
+//            implementation(compose.material3)
+////                implementation(compose.ui)
+//
+//            @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+//            implementation(compose.components.resources)
+////                implementation(projects.shared.common)
+//            implementation(project(":shared:common"))
+//            implementation(project(":shared:compose"))
+////            }
 //        }
-//        getByName("wasmJsMain").dependencies { 
-//            
-//        }
-        commonMain.dependencies {
-//            dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-//                implementation(compose.ui)
-
-            @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-            implementation(compose.components.resources)
-//                implementation(projects.shared.common)
-            implementation(project(":shared:common"))
+        val wasmJsMain by getting {
+            dependencies {
+                implementation(project(":shared:common"))
                 implementation(project(":shared:compose"))
-//            }
+                
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+//                implementation(compose.ui)
+                
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
+            }
         }
-//        val wasmJsMain by getting {
-//            dependencies {
-//                implementation(project(":shared:common"))
-//            }
-//        }
     }
 }
 
