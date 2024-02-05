@@ -12,9 +12,9 @@ kotlin {
         moduleName = "necrosJsApp"
         browser {
             commonWebpackConfig {
-                cssSupport {
-                    enabled.set(true)
-                }
+//                cssSupport {
+//                    enabled.set(true)
+//                }
                 outputFileName = "necrosJsApp.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     // Uncomment and configure this if you want to open a browser different from the system default 
