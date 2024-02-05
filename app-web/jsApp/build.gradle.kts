@@ -8,7 +8,7 @@ plugins {
 //version = "1.0-SNAPSHOT"
 
 kotlin {
-    js {
+    js(IR) {
         moduleName = "necrosJsApp"
         browser {
             commonWebpackConfig {

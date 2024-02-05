@@ -52,7 +52,7 @@ kotlin {
     jvm()
     js { 
 //        useCommonJs()
-//        browser()
+        browser()
     }
     @OptIn(org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl::class) wasmJs {
 //        moduleName = "wasmJsApp"\
