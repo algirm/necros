@@ -50,7 +50,6 @@ kotlin {
 //        }
         val jsMain by getting {
             dependencies {
-                implementation(project(":shared:common"))
 
                 implementation(project.dependencies.enforcedPlatform(libs.jetbrains.kotlinWrappers.kotlinWrappersBom.get()))
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react")

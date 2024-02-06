@@ -1,6 +1,6 @@
 package id.northbit.necros
 
-import Greeting
+import id.northbit.necros.shared.comon.Greeting
 import mui.material.Box
 import mui.material.Typography
 import mui.system.sx

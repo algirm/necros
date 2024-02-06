@@ -43,8 +43,8 @@ android {
 //    }
 }
 dependencies {
-    implementation(project(":shared:common"))
-    implementation(project(":shared:compose"))
+    implementation(project(":shared"))
+    implementation(project(":shared-compose"))
 
 //    debugImplementation(libs.compose.ui.tooling)
 //    implementation(libs.compose.ui.tooling.preview)
