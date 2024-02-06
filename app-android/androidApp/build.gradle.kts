@@ -47,7 +47,7 @@ android {
 }
 dependencies {
     implementation(projects.shared)
-    implementation(projects.sharedCompose)
+    implementation(projects.core.ui.compose)
     
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.decompose)

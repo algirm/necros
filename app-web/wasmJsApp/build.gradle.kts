@@ -56,7 +56,7 @@ kotlin {
         val wasmJsMain by getting {
             dependencies {
                 implementation(projects.shared)
-                implementation(projects.sharedCompose)
+                implementation(projects.core.ui.compose)
                 
                 implementation(compose.runtime)
                 implementation(compose.foundation)

@@ -32,7 +32,7 @@ dependencyResolutionManagement {
 }
 
 include(":shared")
-include(":shared-compose")
+include(":core:ui:compose")
 include(":app-android:androidApp")
 include(":app-web:jsApp")
 include(":app-web:wasmJsApp")

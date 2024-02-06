@@ -1,4 +1,4 @@
-package id.northbit.necros.compose
+package id.northbit.necros.ui.compose
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image

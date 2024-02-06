@@ -1,4 +1,4 @@
-package id.northbit.necros.compose
+package id.northbit.necros.ui.compose
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

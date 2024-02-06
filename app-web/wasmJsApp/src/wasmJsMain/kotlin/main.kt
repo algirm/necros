@@ -1,10 +1,8 @@
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.window.CanvasBasedWindow
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
-import id.northbit.necros.compose.App
-import id.northbit.necros.shared.transactions.TransactionsComponent
+import id.northbit.necros.ui.compose.App
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalResourceApi::class)
