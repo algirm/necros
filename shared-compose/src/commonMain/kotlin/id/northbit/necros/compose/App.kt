@@ -40,7 +40,8 @@ fun App() {
             }
             AnimatedVisibility(showContent) {
                 Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource("compose-multiplatform.xml"), null)
+//                    Image(painterResource("compose-multiplatform.xml"), null)
+                    Image(painterResource("cat1.jpg"), null)
 //                    NecrosImage()
                     greetingList.forEach {
                         Text(it)

@@ -1,4 +1,4 @@
-package id.northbit.necros.jsApp
+package id.northbit.necros
 
 import id.northbit.necros.shared.Greeting
 import mui.material.Box

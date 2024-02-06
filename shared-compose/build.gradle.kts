@@ -62,7 +62,7 @@ dependencies {
 }
 
 android {
-    namespace = "id.northbit.necros"
+    namespace = "id.northbit.necros.compose"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
 //    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")

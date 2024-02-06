@@ -27,8 +27,8 @@ kotlin {
                     static = (static ?: mutableListOf()).apply {
                         // Serve sources to debug inside browser
                         add(project.rootDir.path)
-                        add(project.rootDir.path + "/shared/common/commonMain/")
-                        add(project.rootDir.path + "/shared/common/build/processedResources/wasmJs/main/")
+//                        add(project.rootDir.path + "/shared/common/commonMain/")
+                        add(project.rootDir.path + "/shared/build/processedResources/wasmJs/main/")
 //                        add(project.rootDir.path + "/nonAndroidMain/")
 //                        add(project.rootDir.path + "/web/")
                     }
@@ -65,6 +65,8 @@ kotlin {
                 
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                
+                implementation(libs.decompose)
             }
         }
     }

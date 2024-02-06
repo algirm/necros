@@ -51,7 +51,7 @@ kotlin {
             isStatic = true
         }
     }
-//    androidTarget()
+    androidTarget()
     jvm()
     js { 
 //        useCommonJs()
@@ -104,8 +104,11 @@ kotlin {
 //            implementation(compose.components.resources)
 
             implementation(libs.kotlinx.datetime)
-            implementation(libs.decompose)
+//            implementation(libs.decompose)
 //            implementation(libs.koin.core)
+
+//            implementation("com.squareup.sqldelight:runtime:1.5.5")
+//            implementation("com.slack.circuit:circuit-foundation:0.18.2")
         }
 //        val jsWasmMain by getting {
 //            dependsOn(commonMain.get())
@@ -120,7 +123,7 @@ kotlin {
 }
 
 android {
-    namespace = "id.northbit.necros"
+    namespace = "id.northbit.necros.shared"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
 //    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
