@@ -28,6 +28,12 @@ android {
             isMinifyEnabled = false
         }
     }
+//    buildFeatures {
+//        compose = true
+//    }
+//    composeOptions {
+//        kotlinCompilerExtensionVersion = "1.5.0"
+//    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -39,5 +45,8 @@ android {
 dependencies {
     implementation(project(":shared:common"))
     implementation(project(":shared:compose"))
+
+//    debugImplementation(libs.compose.ui.tooling)
+//    implementation(libs.compose.ui.tooling.preview)
 }
  

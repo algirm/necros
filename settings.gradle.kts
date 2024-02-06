@@ -7,6 +7,19 @@ pluginManagement {
         google()
         gradlePluginPortal()
         mavenCentral()
+        maven("https://jitpack.io")
+    }
+
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.toString() == "id.northbit.gradle.util") {
+                useModule("com.github.algirm:gradle-util-plugin:de150700bf")
+            }
+        }
+    }
+
+    plugins {
+        id("id.northbit.gradle.util")
     }
 }
 

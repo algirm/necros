@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,7 +22,9 @@ import org.jetbrains.compose.resources.painterResource
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun App() {
+    println("NecrosTag App composition")
     MaterialTheme {
+        println("NecrosTag MaterialTheme composition")
         var showContent by remember { mutableStateOf(false) }
         val greeting = remember { Greeting().greet() }
         val greetingList = remember { Greeting().greetList() }
@@ -34,11 +35,13 @@ fun App() {
 
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             Button(onClick = { showContent = !showContent }) {
+                println("NecrosTag Button composition")
                 Text("Click me!")
             }
             AnimatedVisibility(showContent) {
                 Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                     Image(painterResource("compose-multiplatform.xml"), null)
+//                    NecrosImage()
                     greetingList.forEach {
                         Text(it)
                         Divider()
@@ -48,3 +51,10 @@ fun App() {
         }
     }
 }
+
+//@OptIn(ExperimentalResourceApi::class)
+//@Composable
+//internal fun NecrosImage() {
+//    println("NecrosTag Image composition")
+//    Image(painterResource("compose-multiplatform.xml"), null)
+//}

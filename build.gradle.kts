@@ -6,4 +6,10 @@ plugins {
     alias(libs.plugins.kotlinAndroid) apply false
     alias(libs.plugins.jetbrainsCompose) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
+
+    id("id.northbit.gradle.util")
 }
+
+//plugins {
+//    id("id.northbit.gradle.setup")
+//}

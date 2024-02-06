@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.plugin.KotlinTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 //@file:Suppress("OPT_IN_USAGE")
@@ -42,12 +43,14 @@ kotlin {
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
+//        iosTarget.compilations.configureEach { 
+//            compileTaskProvider.get().enabled = false
+//        }
         iosTarget.binaries.framework {
-            baseName = "shared:common"
+            baseName = "SharedCommon"
             isStatic = true
         }
     }
-
 //    androidTarget()
     jvm()
     js { 
@@ -85,7 +88,6 @@ kotlin {
 //        useCommonJs()
 //        browser()
 //    }
-
     sourceSets {
 
 //        androidMain.dependencies {

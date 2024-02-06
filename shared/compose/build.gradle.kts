@@ -33,6 +33,9 @@ kotlin {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.core)
+            
+//            implementation(compose.uiTooling)
+//            implementation(compose.preview)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -43,6 +46,9 @@ kotlin {
             implementation(compose.components.resources)
 
             implementation(libs.kotlinx.datetime)
+            
+//            implementation(compose.uiTooling)
+//            implementation(compose.preview)
 
 //            implementation(libs.koin.core)
             implementation(project(":shared:common"))
@@ -77,12 +83,19 @@ android {
 //            isMinifyEnabled = false
 //        }
 //    }
+    buildFeatures { 
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.5"
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     dependencies {
-        debugImplementation(libs.compose.ui.tooling)
+//        debugImplementation(libs.compose.ui.tooling)
+        debugImplementation(compose.uiTooling)
     }
 }
 
