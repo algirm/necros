@@ -1,4 +1,4 @@
-import id.northbit.necros.shared.comon.Platform
+package id.northbit.necros.shared
 
 class WasmPlatform: Platform {
     override val name: String = "Web with Kotlin/Wasm"

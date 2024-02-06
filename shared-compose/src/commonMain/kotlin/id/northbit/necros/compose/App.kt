@@ -1,6 +1,5 @@
-package id.northbit.necros.shared.compose
+package id.northbit.necros.compose
 
-import id.northbit.necros.shared.comon.Greeting
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -16,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import id.northbit.necros.shared.Greeting
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 

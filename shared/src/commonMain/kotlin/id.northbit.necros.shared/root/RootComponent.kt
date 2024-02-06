@@ -1,4 +1,4 @@
-package id.northbit.necros.shared.comon.root
+package id.northbit.necros.shared.root
 
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value

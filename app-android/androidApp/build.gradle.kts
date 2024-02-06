@@ -4,7 +4,7 @@ plugins {
 //    id("org.jetbra")
 }
 android {
-    namespace = "id.northbit.necros"
+    namespace = "id.northbit.necros.androidApp"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
 //    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -12,7 +12,7 @@ android {
 //    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        applicationId = "id.northbit.necros"
+        applicationId = "id.northbit.necros.androidApp"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
@@ -43,8 +43,8 @@ android {
 //    }
 }
 dependencies {
-    implementation(project(":shared"))
-    implementation(project(":shared-compose"))
+    implementation(projects.shared)
+    implementation(projects.sharedCompose)
 
 //    debugImplementation(libs.compose.ui.tooling)
 //    implementation(libs.compose.ui.tooling.preview)

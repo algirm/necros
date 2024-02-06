@@ -1,4 +1,4 @@
-import id.northbit.necros.shared.comon.Platform
+package id.northbit.necros.shared
 
 actual fun getSomeInt(): Int = 0
 actual fun getPlatform(): Platform = JvmPlatform()

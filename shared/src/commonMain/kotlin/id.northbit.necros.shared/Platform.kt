@@ -1,4 +1,4 @@
-package id.northbit.necros.shared.comon
+package id.northbit.necros.shared
 
 interface Platform {
     val name: String

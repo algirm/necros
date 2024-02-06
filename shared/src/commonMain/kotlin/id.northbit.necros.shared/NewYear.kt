@@ -1,4 +1,4 @@
-package id.northbit.necros.shared.comon
+package id.northbit.necros.shared
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate

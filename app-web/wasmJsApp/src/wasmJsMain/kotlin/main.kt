@@ -1,6 +1,6 @@
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.window.CanvasBasedWindow
-import id.northbit.necros.shared.compose.App
+import id.northbit.necros.compose.App
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalResourceApi::class)
