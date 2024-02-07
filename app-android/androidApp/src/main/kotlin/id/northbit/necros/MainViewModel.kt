@@ -3,6 +3,7 @@ package id.northbit.necros
 import androidx.lifecycle.ViewModel
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
+import id.northbit.necros.core.database.DatabaseDriverFactory
 import id.northbit.necros.shared.transactions.TransactionsComponent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,7 +12,6 @@ import kotlinx.coroutines.flow.asStateFlow
 class MainViewModel(
 //    private val transactionsComponent: TransactionsComponent
 ) : ViewModel() {
-    
 }
 
 //internal class TransactionsComponentImpl() : TransactionsComponent {

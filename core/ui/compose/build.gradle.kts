@@ -30,6 +30,8 @@ kotlin {
     sourceSets {
 
         androidMain.dependencies {
+            implementation(projects.core.database)
+
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.core)

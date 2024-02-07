@@ -1,3 +1,13 @@
-CREATE TABLE Info(
-    app_version TEXT NOT NULL
+CREATE TABLE wallet(
+    id INTEGER PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL
 );
+
+CREATE INDEX wallet_id ON wallet(name);
+
+INSERT INTO wallet(name)
+VALUES ("Cash");
+
+getAllWallet:
+SELECT * 
+FROM wallet;
