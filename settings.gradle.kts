@@ -13,7 +13,7 @@ pluginManagement {
     resolutionStrategy {
         eachPlugin {
             if (requested.id.toString() == "id.northbit.gradle.util") {
-                useModule("com.github.algirm:gradle-util-plugin:de150700bf")
+                useModule("com.github.algirm:gradle-util:master")
             }
         }
     }
@@ -33,6 +33,7 @@ dependencyResolutionManagement {
 
 include(":shared")
 include(":core:ui:compose")
+include(":core:database")
 include(":app-android:androidApp")
 include(":app-web:jsApp")
 include(":app-web:wasmJsApp")

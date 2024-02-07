@@ -124,14 +124,14 @@ kotlin {
 
 android {
     namespace = "id.northbit.necros.shared"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = libs.versions.androidCompileSdk.get().toInt()
 
 //    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 //    sourceSets["main"].res.srcDirs("src/androidMain/res")
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
     
     defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
+        minSdk = libs.versions.androidMinSdk.get().toInt()
 //        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     packaging {
