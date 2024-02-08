@@ -34,6 +34,7 @@ dependencyResolutionManagement {
 include(":shared")
 include(":core:ui:compose")
 include(":core:database")
+include(":core:data")
 include(":app-android:androidApp")
 include(":app-web:jsApp")
 include(":app-web:wasmJsApp")

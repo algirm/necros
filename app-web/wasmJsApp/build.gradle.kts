@@ -11,6 +11,7 @@ version = "1.0-SNAPSHOT"
 kotlin {
     @OptIn(org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl::class)
     wasmJs {
+        sourceSets["wasmJsMain"].resources.srcDirs("../../shared/src/commonMain/resources")
         moduleName = "wasmJsApp"
 //        browser()
         browser {

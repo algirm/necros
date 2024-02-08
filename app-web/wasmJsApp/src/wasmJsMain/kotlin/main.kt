@@ -1,9 +1,15 @@
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.CanvasBasedWindow
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import id.northbit.necros.ui.compose.App
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.painterResource
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalResourceApi::class)
 fun main() {
@@ -11,7 +17,10 @@ fun main() {
         DefaultComponentContext(
             lifecycle = LifecycleRegistry()
         )
-        App()
+        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+            App()
+            Image(painterResource("dog.xml"), null)
+        }
 //        MaterialTheme {
 //            var showContent by remember { mutableStateOf(false) }
 //            
