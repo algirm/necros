@@ -25,7 +25,7 @@ Web using kotlin WASM (compose) -> run application by running the `:app-web:wasm
 2. Create Dockerfile for build project
 ```
 FROM gradle:latest AS build
-COPY --chown=gradle:gradle /kmm /home/gradle/src
+COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle wasmJsBrowserDistribution --no-daemon
 ```
