@@ -19,3 +19,34 @@ So do kotlin js web, still this is for personal development and exploration.
 
 Web using kotlin JS (react) -> run application by running the `:app-web:jsApp:jsBrowserDevelopmentRun` Gradle task.
 Web using kotlin WASM (compose) -> run application by running the `:app-web:wasmJsApp:wasmJsBrowserDevelopmentRun` Gradle task.
+
+## Run wasmJs from docker (local)
+1. Checkout repository
+2. Create Dockerfile for build project
+```
+FROM gradle:latest AS build
+COPY --chown=gradle:gradle /kmm /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle wasmJsBrowserDistribution --no-daemon
+```
+3. Build project image
+```
+docker build -t necros-img .
+```
+4. Create new directory for webserver (different directory from project)
+5. Create Dockerfile for web server
+```
+FROM necros-img:latest AS buildImg
+FROM nginx
+COPY --from=buildImg /home/gradle/src/app-web/wasmJsApp/build/dist/wasmJs/productionExecutable /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
+RUN ls
+```
+6. Build web server image
+```
+docker build -t webserver-img .
+```
+7. Run webserver to localhost
+```
+docker run -it -d -p 80:80 webserver-img 
+```
