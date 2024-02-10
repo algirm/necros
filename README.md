@@ -148,3 +148,26 @@ or if want to reload one container
 ```yml
 docker-compose up -d --force-recreate --no-deps <container_name>
 ```
+
+## Version catalog util library
+Add this plugin on build.gradle.kts project root
+```renderscript
+plugins { 
+    id("com.github.ben-manes.versions") version "0.41.0"
+    id("nl.littlerobots.version-catalog-update") version "0.8.3"
+}
+
+versionCatalogUpdate { // Optional config
+    versionCatalogs {
+        keep {
+            keepUnusedVersions = true
+            keepUnusedLibraries = true
+            keepUnusedPlugins = true
+        }
+    }
+}
+```
+1. `./gradlew versionCatalogUpdate` → Automatically updates dependency versions, formats them, and sorts them alphabetically.
+2. `./gradlew versionCatalogUpdate --interactive` → Lists updatable dependencies but does not automatically update them.
+3. `./gradlew versionCatalogApplyUpdates` → Approves the updates listed for dependencies.
+4. `./gradlew versionCatalogFormat` → Formats and alphabetically sorts the version catalog.
