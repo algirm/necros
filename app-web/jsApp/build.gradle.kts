@@ -9,6 +9,7 @@ plugins {
 
 kotlin {
     js(IR) {
+        sourceSets["jsMain"].resources.srcDirs("../../shared/src/commonMain/resources")
         moduleName = "necrosJsApp"
         browser {
             commonWebpackConfig {

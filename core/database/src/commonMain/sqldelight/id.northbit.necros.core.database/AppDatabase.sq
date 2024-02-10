@@ -11,3 +11,7 @@ VALUES ("Cash");
 getAllWallet:
 SELECT * 
 FROM wallet;
+
+insertWallet:
+INSERT INTO wallet(name)
+VALUES ?;

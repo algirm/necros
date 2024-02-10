@@ -2,21 +2,32 @@ package id.northbit.necros
 
 import id.northbit.necros.shared.Greeting
 import mui.material.Box
+import mui.material.Card
+import mui.material.CardContent
+import mui.material.ImageListItem
+import mui.material.Stack
 import mui.material.Typography
 import mui.system.sx
 import react.FC
 import react.Props
 import react.create
 import react.dom.client.createRoot
+import react.dom.html.ReactHTML.img
+import web.canvas.ImageBitmapSource
+import web.canvas.createImageBitmap
 import web.cssom.AlignItems
+import web.cssom.Background
+import web.cssom.BackgroundImage
 import web.cssom.Display
 import web.cssom.FlexDirection
+import web.cssom.Image
+import web.cssom.ImageRendering
 import web.cssom.px
 import web.dom.document
 
 fun main() {
     val rootContent = FC {
-        Box {
+        Stack {
             sx {
                 padding = 16.px
                 display = Display.flex
@@ -25,6 +36,11 @@ fun main() {
             }
 
             Typography { +Greeting().greet() }
+            Box {
+                img {
+                    src = "cat1.jpg"
+                }
+            }
         }
     }
 

@@ -25,22 +25,7 @@ android {
 }
 
 kotlin {
-    jvm {
-        compilations {
-            val anjingKu by compilations.creating {
-                defaultSourceSet { 
-//                    dependsOn()
-                }
-            }
-        }  
-    }
     sourceSets {
-        maybeCreate("kucingMuMain")
-        val kucingKu by creating {
-            create("main").dependencies { 
-                
-            }
-        }
         commonMain.dependencies {
             implementation(projects.shared)
 
@@ -56,13 +41,6 @@ kotlin {
             implementation(libs.sqldelight.sqlite.driver)
         }
     }
-//    targets.configureEach {
-//        compilations.configureEach {
-//            compilerOptions.configure {
-//                freeCompilerArgs.add("-Xexpect-actual-classes")
-//            }
-//        }
-//    }
 }
 
 sqldelight {

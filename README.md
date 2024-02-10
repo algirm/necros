@@ -20,10 +20,10 @@ So do kotlin js web, still this is for personal development and exploration.
 Web using kotlin JS (react) -> run application by running the `:app-web:jsApp:jsBrowserDevelopmentRun` Gradle task.
 Web using kotlin WASM (compose) -> run application by running the `:app-web:wasmJsApp:wasmJsBrowserDevelopmentRun` Gradle task.
 
-## Run wasmJs from docker (local)
+## Deploy wasmJs from docker (local)
 1. Checkout repository
 2. Create Dockerfile for build project
-```
+```Dockerfile
 FROM gradle:latest AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
@@ -35,7 +35,7 @@ docker build -t necros-img .
 ```
 4. Create new directory for webserver (different directory from project)
 5. Create Dockerfile for web server
-```
+```Dockerfile
 FROM necros-img:latest AS buildImg
 FROM nginx
 COPY --from=buildImg /home/gradle/src/app-web/wasmJsApp/build/dist/wasmJs/productionExecutable /usr/share/nginx/html
@@ -49,4 +49,102 @@ docker build -t webserver-img .
 7. Run webserver to localhost
 ```
 docker run -it -d -p 80:80 webserver-img 
+```
+
+## Deploy wasmJs from docker (cloud) with minimum specification machine
+1. Build application with your machine (local) on IDE
+```agsl
+./gradlew wasmJsBrowserDistribution
+```
+2. Copy or push all files inside `app-web/wasmJsApp/build/dist/wasmJs/productionExecutable` 
+to another temp remote repository or directly push to server if available 
+4. Create `/src` directory and move all files pushed before into it
+5. Create `Dockerfile` (so the directory contain `Dockerfile` and `/src`)
+```Dockerfile
+FROM progrium/busybox
+ADD /src /var/www/html
+VOLUME necros-wasm:/var/www/html
+```
+6. Build into docker image
+```
+docker build -t necros-wasm-image .
+```
+7. Create docker compose file
+```yml
+version: '3'
+
+services:
+  necros-wasm:
+    image: necros-wasm-image
+    container_name: necros-wasm
+    volumes:
+      - necros-wasm:/var/www/html
+
+  necros-wasm-webserver:
+    depends_on:
+      - necros-wasm
+    image: nginx:1.15.12-alpine
+    container_name: necros-wasm-webserver
+    restart: unless-stopped
+    ports:
+      - "2000:2000"
+    volumes:
+      - necros-wasm:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
+    networks:
+      - app-network
+volumes:
+  necros-wasm:
+
+networks:
+  app-network:
+    driver: bridge
+```
+8. Create directory `nginx-conf` and create `nginx.conf` inside it
+```conf
+server {
+        listen 80;
+        listen [::]:80;
+
+        server_name <your_pub_ip> localhost;
+
+        root /var/www/html;
+
+        location ~ /.well-known/acme-challenge {
+                allow all;
+                root /var/www/html;
+        }
+        location = /favicon.ico {
+                log_not_found off; access_log off;
+        }
+        location = /robots.txt {
+                log_not_found off; access_log off; allow all;
+        }
+        location ~* \.(css|gif|ico|jpeg|jpg|js|png|wasm)$ {
+                expires max;
+                log_not_found off;
+        }
+
+        include       /etc/nginx/mime.types;
+
+        types {
+
+            application/wasm wasm;
+
+        }
+
+        default_type  application/octet-stream;
+}
+```
+9. Run docker compose
+```yml
+docker-compose up -d
+```
+10. If there any change, pull new code to `/src` and do build image and recreate container
+```yml
+docker-compose up -d --force-recreate
+```
+or if want to reload one container
+```yml
+docker-compose up -d --force-recreate --no-deps <container_name>
 ```
