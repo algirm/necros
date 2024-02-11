@@ -8,7 +8,7 @@ plugins {
 }
 setupAndroidLibrary()
 android {
-    namespace = "id.northbit.necros.core.database"
+    namespace = "id.northbit.necros.core.data"
 }
 kotlin {
     androidTarget()

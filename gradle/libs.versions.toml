@@ -10,11 +10,11 @@ androidx-core-ktx = "1.12.0"
 androidx-espresso-core = "3.5.1"
 androidx-material = "1.11.0"
 androidx-test-junit = "1.1.5"
-compose = "1.6.0"
-compose-plugin = "1.6.0-alpha01"
+compose-android = "1.6.1"
+compose-jetbrain = "1.6.0-alpha01"
 #decompose = "2.2.2"
-decompose = "3.0.0-alpha05"
-jetbrainsKotlinWrappers = "1.0.0-pre.608"
+decompose = "3.0.0-alpha06"
+jetbrainsKotlinWrappers = "1.0.0-pre.695"
 #compose-plugin = "1.5.11"
 junit = "4.13.2"
 koin = "3.5.3"
@@ -33,8 +33,8 @@ androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", vers
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-material = { module = "com.google.android.material:material", version.ref = "androidx-material" }
 androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-junit" }
-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-android" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-android" }
 decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 jetbrains-kotlinWrappers-kotlinWrappersBom = { module = "org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom", version.ref = "jetbrainsKotlinWrappers" }
 junit = { module = "junit:junit", version.ref = "junit" }
@@ -55,7 +55,7 @@ sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", versi
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 gradleUtil = "id.northbit.gradle.util:master"
-jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-jetbrain" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }

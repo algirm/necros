@@ -104,7 +104,7 @@ kotlin {
 //            implementation(compose.components.resources)
 
             implementation(libs.kotlinx.datetime)
-//            implementation(libs.decompose)
+            implementation(libs.decompose)
 //            implementation(libs.koin.core)
 
 //            implementation("com.squareup.sqldelight:runtime:1.5.5")
