@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.gradleUtil)
-    alias(libs.plugins.sqlDelight)
+//    alias(libs.plugins.sqlDelight)
 }
 setupAndroidLibrary()
 android {
