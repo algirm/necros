@@ -15,6 +15,7 @@ plugins {
 setupMultiplatform {
     androidTarget()
     jvm()
+//    @Suppress("OPT_IN_USAGE") wasmJs()
     iosCompat()
 }
 

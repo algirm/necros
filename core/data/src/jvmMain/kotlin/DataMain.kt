@@ -1,5 +1,0 @@
-class DataMain {
-    fun main() {
-        
-    }
-}

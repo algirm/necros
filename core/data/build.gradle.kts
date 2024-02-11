@@ -1,4 +1,5 @@
 import id.northbit.gradle.setupAndroidLibrary
+import id.northbit.gradle.setupMultiplatform
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -6,28 +7,25 @@ plugins {
     alias(libs.plugins.gradleUtil)
 //    alias(libs.plugins.sqlDelight)
 }
+setupMultiplatform {
+    androidTarget()
+    jvm()
+    js { browser() }
+    @Suppress("OPT_IN_USAGE") wasmJs()
+}
 setupAndroidLibrary()
 android {
     namespace = "id.northbit.necros.core.data"
 }
 kotlin {
-    androidTarget()
-    jvm()
-    applyDefaultHierarchyTemplate()
-    
-    targets.forEach { 
-        println("bosque ${it.name}")
-    }
+
     sourceSets {
-        val commonMain by getting
-        val androidMain by getting
-        val nonAndroid by creating
-        val testing by creating
-        
-        nonAndroid.dependsOn(commonMain)
-        testing.dependsOn(commonMain)
-        androidMain.dependsOn(testing)
-        
+        commonMain.dependencies {
+//            implementation(projects.core.database)
+        }
+        androidMain.dependencies {
+            api(projects.core.database)
+        }
         jvmMain.dependencies {
             implementation(libs.sqldelight.sqlite.driver)
         }

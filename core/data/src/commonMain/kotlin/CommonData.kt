@@ -1,5 +1,0 @@
-class CommonData {
-    fun main() {
-        
-    }
-}

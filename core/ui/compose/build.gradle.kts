@@ -30,7 +30,7 @@ kotlin {
     sourceSets {
 
         androidMain.dependencies {
-            implementation(projects.core.database)
+//            implementation(projects.core.database)
 
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
@@ -40,6 +40,8 @@ kotlin {
 //            implementation(compose.preview)
         }
         commonMain.dependencies {
+            implementation(projects.core.data)
+            
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
