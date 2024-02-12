@@ -48,10 +48,13 @@ android {
 dependencies {
     implementation(projects.shared)
     implementation(projects.core.ui.compose)
+    implementation(projects.core.data)
     implementation(projects.core.database)
     
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.decompose)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
 
 //    debugImplementation(libs.compose.ui.tooling)
 //    implementation(libs.compose.ui.tooling.preview)

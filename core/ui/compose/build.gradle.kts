@@ -34,7 +34,7 @@ kotlin {
 
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
-            implementation(libs.koin.core)
+            implementation(libs.koin.android)
             
 //            implementation(compose.uiTooling)
 //            implementation(compose.preview)
@@ -55,7 +55,7 @@ kotlin {
 //            implementation(compose.uiTooling)
 //            implementation(compose.preview)
 
-//            implementation(libs.koin.core)
+            implementation(libs.koin.core)
         }
     }
 }

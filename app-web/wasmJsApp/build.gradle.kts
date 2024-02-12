@@ -70,6 +70,8 @@ kotlin {
 
                 implementation(libs.decompose)
 //                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.koin.core)
+//                implementation("io.insert-koin:koin-wasm:3.6.0-wasm-alpha2")
             }
         }
     }

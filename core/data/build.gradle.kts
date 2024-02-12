@@ -34,6 +34,7 @@ kotlin {
         commonMain.dependencies { 
             // implementation of domain or other utils like serialization TODO
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.koin.core)
         }
         
         hybridMain.dependencies { 

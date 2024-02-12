@@ -7,15 +7,16 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.lifecycleScope
-import id.northbit.necros.core.data.DataModule
-import id.northbit.necros.core.database.DatabaseDriverFactory
-import id.northbit.necros.core.database.data.AppDatabase
+import id.northbit.necros.core.data.wallet.WalletRepository
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
+    
+    private val walletRepository: WalletRepository by inject()
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val walletRepository = DataModule(AppDatabase(DatabaseDriverFactory(this).createDriver())).provideWalletRepository()
         lifecycleScope.launch {
             walletRepository.getAllWallet().collect {
                 Toast.makeText(

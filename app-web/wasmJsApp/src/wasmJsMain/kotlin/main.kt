@@ -11,15 +11,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.CanvasBasedWindow
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
-import id.northbit.necros.core.data.DataModule
+import id.northbit.necros.core.data.dataModule
+import id.northbit.necros.core.data.wallet.WalletRepository
 import id.northbit.necros.ui.compose.App
 import kotlinx.browser.window
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import org.koin.core.context.startKoin
+import org.koin.dsl.koinApplication
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalResourceApi::class)
 fun main() {
-    val walletRepository = DataModule().provideWalletRepository()
+    val koinApp = startKoin { 
+        modules(dataModule())
+    }
+    val walletRepository: WalletRepository = koinApp.koin.get()
     CanvasBasedWindow(canvasElementId = "ComposeTarget") {
         DefaultComponentContext(
             lifecycle = LifecycleRegistry()
