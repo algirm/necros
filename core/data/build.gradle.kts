@@ -12,7 +12,7 @@ setupMultiplatform {
     androidTarget()
     jvm()
     js { browser() }
-    @Suppress("OPT_IN_USAGE") wasmJs()
+    @Suppress("OPT_IN_USAGE") wasmJs { browser() }
     iosCompat()
 }
 setupAndroidLibrary()
@@ -38,6 +38,7 @@ kotlin {
         
         hybridMain.dependencies { 
             implementation(projects.core.database)
+            
         }
     }
     

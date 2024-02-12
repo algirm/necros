@@ -14,9 +14,6 @@ import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import id.northbit.necros.core.data.DataModule
 import id.northbit.necros.ui.compose.App
 import kotlinx.browser.window
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 

@@ -41,7 +41,8 @@ kotlin {
         }
         commonMain.dependencies {
             implementation(projects.core.data)
-            
+            implementation(projects.shared)
+
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
@@ -50,12 +51,11 @@ kotlin {
             implementation(compose.components.resources)
 
             implementation(libs.kotlinx.datetime)
-            
+
 //            implementation(compose.uiTooling)
 //            implementation(compose.preview)
 
 //            implementation(libs.koin.core)
-            implementation(projects.shared)
         }
     }
 }

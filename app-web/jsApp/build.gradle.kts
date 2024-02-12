@@ -60,6 +60,8 @@ kotlin {
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-css-js")
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-mui-material")
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion")
+
+//                implementation(libs.kotlinx.coroutines.core)
             }
         }
     }

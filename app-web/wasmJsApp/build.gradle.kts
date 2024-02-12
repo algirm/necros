@@ -67,8 +67,9 @@ kotlin {
                 
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
-                
+
                 implementation(libs.decompose)
+//                implementation(libs.kotlinx.coroutines.core)
             }
         }
     }
