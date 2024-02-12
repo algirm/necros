@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS `wallet` (
+    `id` INTEGER PRIMARY KEY NOT NULL,
+    `name` TEXT NOT NULL
+);
+
+CREATE INDEX wallet_id ON wallet(name);
+
+INSERT INTO wallet(name)
+VALUES ("Cash");
+
+getAll:
+SELECT * FROM wallet;
+
+insert:
+INSERT INTO wallet(name)
+VALUES ?;

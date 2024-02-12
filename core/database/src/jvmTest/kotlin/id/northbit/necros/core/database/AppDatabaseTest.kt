@@ -1,23 +1,24 @@
 package id.northbit.necros.core.database
 
-import idnorthbitnecroscoredatabase.Wallet
+import id.northbit.necros.core.database.data.AppDatabase
+import idnorthbitnecroscoredatabase.data.Wallet
+import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class AppDatabaseTest {
     
-//    private lateinit var db: AppDatabase
-    val db: AppDatabase = AppDatabase(DatabaseDriverFactory().createDriver())
+    private lateinit var db: AppDatabase
     
     @BeforeTest
     fun setup() {
-//        db = AppDatabase(DatabaseDriverFactory().createDriver())
+        db = AppDatabase(DatabaseDriverFactory().createDriver())
     }
     
     @Test
     fun `get all wallet from database initial data`() {
-        val result = db.appDatabaseQueries.getAllWallet().executeAsList()
+        val result = db.walletQueries.getAll().executeAsList()
         println(result.toString())
         assertEquals(
             expected = true,
@@ -31,8 +32,8 @@ class AppDatabaseTest {
     
     @Test
     fun `insert one wallet and get all wallet should get 2 data`() {
-        db.appDatabaseQueries.insertWallet(Wallet(0, "Wallet Two"))
-        val result = db.appDatabaseQueries.getAllWallet().executeAsList()
+        db.walletQueries.insert(Wallet(1, "Wallet Two"))
+        val result = db.walletQueries.getAll().executeAsList()
         assertEquals(
             expected = true,
             actual = result.size == 2

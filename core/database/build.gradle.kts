@@ -47,7 +47,7 @@ kotlin {
 sqldelight {
     databases {
         create("AppDatabase") {
-            packageName.set("id.northbit.necros.core.database")
+            packageName.set("id.northbit.necros.core.database.data")
         }
     }
 }

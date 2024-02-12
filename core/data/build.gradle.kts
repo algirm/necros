@@ -1,3 +1,4 @@
+import id.northbit.gradle.iosCompat
 import id.northbit.gradle.setupAndroidLibrary
 import id.northbit.gradle.setupMultiplatform
 
@@ -12,22 +13,43 @@ setupMultiplatform {
     jvm()
     js { browser() }
     @Suppress("OPT_IN_USAGE") wasmJs()
+    iosCompat()
 }
 setupAndroidLibrary()
 android {
     namespace = "id.northbit.necros.core.data"
 }
 kotlin {
-
+    applyDefaultHierarchyTemplate()
     sourceSets {
-        commonMain.dependencies {
-//            implementation(projects.core.database)
+        val onlineBasedMain by creating { dependsOn(commonMain.get()) }
+        val hybridMain by creating { dependsOn(commonMain.get()) }
+
+        val androidMain by getting { dependsOn(hybridMain) }
+        val jvmMain by getting { dependsOn(hybridMain) }
+        val iosMain by getting { dependsOn(hybridMain) }
+        val jsMain by getting { dependsOn(onlineBasedMain) }
+        val wasmJsMain by getting { dependsOn(onlineBasedMain) }
+
+        commonMain.dependencies { 
+            // implementation of domain or other utils like serialization TODO
+            implementation(libs.kotlinx.coroutines.core)
         }
-        androidMain.dependencies {
-            api(projects.core.database)
-        }
-        jvmMain.dependencies {
-            implementation(libs.sqldelight.sqlite.driver)
+        
+        hybridMain.dependencies { 
+            implementation(projects.core.database)
         }
     }
+    
+//    sourceSets {
+//        commonMain.dependencies {
+////            implementation(projects.core.database)
+//        }
+//        androidMain.dependencies {
+//            api(projects.core.database)
+//        }
+//        jvmMain.dependencies {
+//            implementation(libs.sqldelight.sqlite.driver)
+//        }
+//    }
 }
