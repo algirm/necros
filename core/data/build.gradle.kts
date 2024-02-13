@@ -39,7 +39,7 @@ kotlin {
         
         hybridMain.dependencies { 
             implementation(projects.core.database)
-            
+            implementation(libs.sqldelight.coroutines.extensions)
         }
     }
     
