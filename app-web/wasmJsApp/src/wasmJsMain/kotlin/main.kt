@@ -13,6 +13,7 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import id.northbit.necros.core.data.dataModule
 import id.northbit.necros.core.data.wallet.WalletRepository
+import id.northbit.necros.shared.sharedModule
 import id.northbit.necros.ui.compose.App
 import kotlinx.browser.window
 import org.jetbrains.compose.resources.ExperimentalResourceApi
@@ -23,7 +24,10 @@ import org.koin.dsl.koinApplication
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalResourceApi::class)
 fun main() {
     val koinApp = startKoin { 
-        modules(dataModule())
+        modules(
+            sharedModule,
+            dataModule()
+        )
     }
     val walletRepository: WalletRepository = koinApp.koin.get()
     CanvasBasedWindow(canvasElementId = "ComposeTarget") {

@@ -32,6 +32,8 @@ kotlin {
         val wasmJsMain by getting { dependsOn(onlineBasedMain) }
 
         commonMain.dependencies { 
+            implementation(projects.shared)
+            
             // implementation of domain or other utils like serialization TODO
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.koin.core)

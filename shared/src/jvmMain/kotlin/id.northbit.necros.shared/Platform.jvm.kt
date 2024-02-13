@@ -2,16 +2,16 @@ package id.northbit.necros.shared
 
 import kotlinx.coroutines.Dispatchers
 
-class WasmPlatform: Platform {
-    override val name: String = "Web with Kotlin/Wasm"
+class JvmPlatform : Platform {
+    override val name: String = "Jvm ${System.getProperty("os.name")}"
 }
 
-actual fun getPlatform(): Platform = WasmPlatform()
+actual fun getPlatform(): Platform = JvmPlatform()
 
-actual fun getSomeInt(): Int = 1997
+actual fun getSomeInt(): Int = 0
 
 actual fun getDispatcherProvider(): DispatcherProvider = DispatcherProvider(
     main = Dispatchers.Main,
-    io = Dispatchers.Default,
+    io = Dispatchers.IO,
     default = Dispatchers.Default
 )

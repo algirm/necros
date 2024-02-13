@@ -1,3 +1,6 @@
+import com.android.kotlin.multiplatform.ide.models.serialization.androidTargetKey
+import id.northbit.gradle.iosCompat
+import id.northbit.gradle.setupMultiplatform
 import org.jetbrains.kotlin.gradle.plugin.KotlinTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
@@ -9,80 +12,88 @@ plugins {
 //    alias(libs.plugins.jetbrainsCompose)
 }
 
-kotlin {
-//    jvmToolchain(17)
+setupMultiplatform {
+    androidTarget()
+    jvm()
+    iosCompat()
+    js { browser() }
+    @Suppress("OPT_IN_USAGE") wasmJs { browser() }
+}
 
-//    @OptIn(ExperimentalWasmDsl::class)
-//    wasmJs {
-//        moduleName = "shared"
-//        browser {
-//            commonWebpackConfig {
-//                outputFileName = "composeApp.js"
+kotlin {
+////    jvmToolchain(17)
+//
+////    @OptIn(ExperimentalWasmDsl::class)
+////    wasmJs {
+////        moduleName = "shared"
+////        browser {
+////            commonWebpackConfig {
+////                outputFileName = "composeApp.js"
+////            }
+////        }
+////        binaries.executable()
+////    }
+//
+////    js {
+////        useCommonJs()
+////        browser()
+////    }
+////    androidTarget()
+////    jvm()
+//
+//    androidTarget {
+//        compilations.all {
+//            kotlinOptions {
+//                jvmTarget = "1.8"
 //            }
 //        }
-//        binaries.executable()
 //    }
-
-//    js {
-//        useCommonJs()
-//        browser()
+//
+//    listOf(
+//        iosX64(),
+//        iosArm64(),
+//        iosSimulatorArm64()
+//    ).forEach { iosTarget ->
+////        iosTarget.compilations.configureEach { 
+////            compileTaskProvider.get().enabled = false
+////        }
+//        iosTarget.binaries.framework {
+//            baseName = "SharedCommon"
+//            isStatic = true
+//        }
 //    }
 //    androidTarget()
 //    jvm()
-
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
-
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-//        iosTarget.compilations.configureEach { 
-//            compileTaskProvider.get().enabled = false
-//        }
-        iosTarget.binaries.framework {
-            baseName = "SharedCommon"
-            isStatic = true
-        }
-    }
-    androidTarget()
-    jvm()
-    js { 
-//        useCommonJs()
-        browser()
-    }
-    @OptIn(org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl::class) wasmJs {
-//        moduleName = "wasmJsApp"\
-        browser()
-//        browser {
-//            commonWebpackConfig {
-//                outputFileName = "wasmJsApp.js"
-//                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-//                    // Uncomment and configure this if you want to open a browser different from the system default 
-//                    // open = mapOf(
-//                    //     "app" to mapOf(
-//                    //         "name" to "google chrome"
-//                    //     )
-//                    // )
-//
-//                    static = (static ?: mutableListOf()).apply {
-//                        // Serve sources to debug inside browser
-//                        add(project.rootDir.path)
-//                        add(project.rootDir.path + "/shared/common/commonMainasd/")
-////                        add(project.rootDir.path + "/nonAndroidMain/")
-////                        add(project.rootDir.path + "/web/")
-//                    }
-//                }
-//            }
-//        }
-//        binaries.executable()
-    }
+//    js { 
+////        useCommonJs()
+//        browser()
+//    }
+//    @OptIn(org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl::class) wasmJs {
+////        moduleName = "wasmJsApp"\
+//        browser()
+////        browser {
+////            commonWebpackConfig {
+////                outputFileName = "wasmJsApp.js"
+////                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
+////                    // Uncomment and configure this if you want to open a browser different from the system default 
+////                    // open = mapOf(
+////                    //     "app" to mapOf(
+////                    //         "name" to "google chrome"
+////                    //     )
+////                    // )
+////
+////                    static = (static ?: mutableListOf()).apply {
+////                        // Serve sources to debug inside browser
+////                        add(project.rootDir.path)
+////                        add(project.rootDir.path + "/shared/common/commonMainasd/")
+//////                        add(project.rootDir.path + "/nonAndroidMain/")
+//////                        add(project.rootDir.path + "/web/")
+////                    }
+////                }
+////            }
+////        }
+////        binaries.executable()
+//    }
 //
 //    js(IR) {
 //        useCommonJs()
@@ -102,14 +113,19 @@ kotlin {
 //            implementation(compose.ui)
 //            @OptIn(ExperimentalComposeLibrary::class)
 //            implementation(compose.components.resources)
-
+            implementation(libs.koin.core)
+            implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.datetime)
             implementation(libs.decompose)
-//            implementation(libs.kotlinx.coroutines.core)
-//            implementation(libs.koin.core)
 
 //            implementation("com.squareup.sqldelight:runtime:1.5.5")
 //            implementation("com.slack.circuit:circuit-foundation:0.18.2")
+        }
+        commonTest.dependencies {
+//            implementation(kotlin("test-common"))
+//            implementation(kotlin("test-annotations-common"))
+
+            implementation(libs.koin.test)
         }
 //        val jsWasmMain by getting {
 //            dependsOn(commonMain.get())
@@ -120,6 +136,7 @@ kotlin {
 //        val wasmJsMain by getting {
 //            dependsOn(commonMain.get())
 //        }
+//        val jvmMain by getting
     }
 }
 
@@ -130,7 +147,7 @@ android {
 //    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 //    sourceSets["main"].res.srcDirs("src/androidMain/res")
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
-    
+
     defaultConfig {
         minSdk = libs.versions.androidMinSdk.get().toInt()
 //        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
